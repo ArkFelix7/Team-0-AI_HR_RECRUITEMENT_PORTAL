@@ -197,7 +197,7 @@ const CallScheduler: React.FC<CallSchedulerProps> = ({
         candidateName,
         jobDetails.title,
         jobDetails.department,
-        resumeAnalysis,
+        resumeAnalysis || null,
         updateTranscript,
         handleAudioPlayback,
         (err: string) => {
