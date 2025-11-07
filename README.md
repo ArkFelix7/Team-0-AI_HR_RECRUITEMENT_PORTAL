@@ -96,6 +96,62 @@ npm run build
 npm run preview
 ```
 
+## Deployment
+
+### Deploying to Vercel
+
+1. **Push to GitHub**
+   ```bash
+   git add .
+   git commit -m "Ready for deployment"
+   git push origin main
+   ```
+
+2. **Import to Vercel**
+   - Go to [vercel.com](https://vercel.com)
+   - Click "Import Project"
+   - Import your GitHub repository
+   - Framework Preset: **Vite**
+   - Root Directory: `./`
+
+3. **Configure Environment Variables**
+   In Vercel Project Settings → Environment Variables, add:
+   
+   ```
+   VITE_SUPABASE_URL=your_supabase_project_url
+   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+   VITE_GEMINI_API_KEY=your_gemini_api_key
+   ```
+
+   **Important**: Add these variables for **All** environments (Production, Preview, Development)
+
+4. **Deploy**
+   - Click "Deploy"
+   - Wait for build to complete
+   - Your app will be live at `your-project.vercel.app`
+
+### Vercel Configuration
+
+The `vercel.json` file is already configured with:
+- Build command: `npm run build`
+- Output directory: `dist`
+- Framework: Vite
+
+### Troubleshooting Vercel Deployment
+
+**Blank Page Issue:**
+- Check build logs for errors
+- Verify environment variables are set correctly
+- Check browser console for API key errors
+
+**404 Errors:**
+- Ensure `dist` folder is being generated
+- Check build output in Vercel logs
+
+**Environment Variable Not Set:**
+- Environment variables MUST start with `VITE_` prefix
+- Redeploy after adding environment variables
+
 ## Usage Workflow
 
 ### 1. Create a Job Posting
